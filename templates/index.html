@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Leads Tracker</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+
+<div style="display:flex;justify-content:center;align-items:center;min-height:100vh;">
+
+<div class="card" style="width:100%;max-width:450px;">
+
+<h1 style="text-align:center;color:var(--primary);font-size:28px;">
+💼 Leads Tracker
+</h1>
+
+<p style="text-align:center;color:#6b7280;margin-bottom:20px;">
+Gestión de clientes potenciales
+</p>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% for category, message in messages %}
+<div class="{{ category }}">
+{{ message }}
+</div>
+{% endfor %}
+{% endwith %}
+
+<form action="/add" method="POST">
+
+<input class="input" name="name" placeholder="Nombre completo">
+
+<br><br>
+
+<input class="input" name="email" placeholder="Correo electrónico">
+
+<br><br>
+
+<input class="input" name="phone" placeholder="Teléfono">
+
+<br><br>
+
+<select class="input" name="service">
+<option>Marketing</option>
+<option>Desarrollo Web</option>
+<option>Consultoría</option>
+</select>
+
+<br><br>
+
+<button class="btn-primary">Guardar Lead</button>
+
+</form>
+
+</div>
+
+</div>
+
+</body>
+</html>

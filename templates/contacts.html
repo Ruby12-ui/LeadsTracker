@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Leads</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+
+<body>
+
+<div style="padding:40px;">
+
+<h1 style="color:var(--primary);text-align:center;">
+📊 Lista de Leads
+</h1>
+
+<div class="card" style="margin-top:20px;">
+
+<table width="100%" border="0">
+
+<tr style="color:white;background:var(--primary);">
+<th>Nombre</th>
+<th>Email</th>
+<th>Servicio</th>
+<th>Acciones</th>
+</tr>
+
+{% for l in leads %}
+<tr>
+<td>{{ l.name }}</td>
+<td>{{ l.email }}</td>
+<td>{{ l.service }}</td>
+<td>
+<a href="/delete/{{ l.id }}" style="color:red;">Eliminar</a>
+</td>
+</tr>
+{% endfor %}
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>
